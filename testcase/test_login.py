@@ -10,8 +10,9 @@ login_data = load_yaml("loginData.yaml") or []
 class TestLogin():
 
     @pytest.mark.parametrize("data", login_data, ids=[data["case"] for data in login_data])
-    def test_login(self, data, login_driver):
-        login_page = LoginPage(login_driver)
+    def test_login(self, data, driver):
+        login_page = LoginPage(driver)
+        login_page.open()
         login_page.login(data["username"], data["password"])
 
         case: str = data["case"]

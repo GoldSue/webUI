@@ -14,7 +14,7 @@ def get_root():
     raise FileNotFoundError("找不到包含main.py的项目根目录")
 def to_dirname(file_name):
     root = get_root()
-    print(os.path.join(root, file_name))
+    return os.path.join(root, file_name)
 
 def load_yaml(file_name):
     file_path = os.path.join(get_root(), 'data', file_name)

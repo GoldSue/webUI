@@ -1,7 +1,12 @@
 - case: login_success
-  username: 18538231111
-  password: Gold77899
+  username: QCAutotester01
+  password: 1qaz2WSX
   expected: 我的首页
+
+#- case: login_success
+#  username: 18538231111
+#  password: Gold77899
+#  expected: 我的首页
 
 - case: login_password_error
   username: 18538231111

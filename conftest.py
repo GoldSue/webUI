@@ -9,18 +9,10 @@ from pages.loggin import LoginPage
 from elements.loginEle import LoginEle
 from utils.utils import load_yaml
 
-load_yaml= load_yaml('loginData.yaml')
+login_data= load_yaml('loginData.yaml')
 
 
-@pytest.fixture(scope="session")
-def driver():
-    options = uc.ChromeOptions()
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("--start-maximized")
 
-    driver = uc.Chrome(options=options)
-    yield driver
-    driver.quit()
 @pytest.fixture(scope="function")
 def login_driver():
     options = uc.ChromeOptions()
@@ -30,12 +22,25 @@ def login_driver():
     driver = uc.Chrome(options=options)
     yield driver
     driver.quit()
-
-def login(driver):
+@pytest.fixture(scope="session")
+def login():
+    options = uc.ChromeOptions()
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument("--start-maximized")
+    prefs = {
+        "credentials_enable_service": False,  # 禁用自动填充服务
+        "profile.password_manager_enabled": False  # 禁用密码管理器
+    }
+    options.add_experimental_option("prefs", prefs)
+    driver = uc.Chrome(options=options)
     login_page = LoginPage(driver)
-    username = load_yaml[0]['username']
-    password = load_yaml[0]['password']
+    username = login_data[0]["username"]
+    password = login_data[0]["password"]
     login_page.login(username, password)
+
+    print(f"[DEBUG] login fixture 开始初始化 driver, id={id(driver)}")
+    yield driver
+    driver.quit()
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
