@@ -15,7 +15,7 @@ class BasePage():
         self.driver = driver
         self.logger = logger
 
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(3)
         self.driver.maximize_window()
     def find_element(self, *locator):
         return self.driver.find_element(*locator)
@@ -31,7 +31,7 @@ class BasePage():
 
     def click(self, *locator, timeout=None):
         try:
-            WebDriverWait(self.driver, timeout or 10).until(
+            WebDriverWait(self.driver, timeout or 5).until(
                 EC.element_to_be_clickable(locator)  # 注意：不解包
             )
             self.find_element(*locator).click()
@@ -41,7 +41,7 @@ class BasePage():
 
     def send_keys(self, text, *locator, timeout=None):
         try:
-            WebDriverWait(self.driver, timeout or 10).until(
+            WebDriverWait(self.driver, timeout or 5).until(
                 EC.visibility_of_element_located(locator)
             )
             element = self.find_element(*locator)
@@ -59,7 +59,7 @@ class BasePage():
 
     def get_text(self, *locator, timeout=None):
         try:
-            WebDriverWait(self.driver, timeout or 10).until(
+            WebDriverWait(self.driver, timeout or 5).until(
                 EC.visibility_of_element_located(locator)
             )
             return self.find_element(*locator).text
@@ -77,7 +77,7 @@ class BasePage():
 
     def get_attribute(self, attribute, *locator, timeout=None):
         try:
-            WebDriverWait(self.driver, timeout or 10).until(
+            WebDriverWait(self.driver, timeout or 3).until(
                 EC.visibility_of_element_located(locator)
             )
             return self.find_element(*locator).get_attribute(attribute)
@@ -94,7 +94,7 @@ class BasePage():
 
     def tab(self, *locator, timeout=None):
         try:
-            WebDriverWait(self.driver, timeout or 10).until(
+            WebDriverWait(self.driver, timeout or 3).until(
                 EC.visibility_of_element_located(locator)
             )
             element = self.find_element(*locator)
@@ -102,3 +102,17 @@ class BasePage():
         except Exception as e:
             self.logger.error(f"Tab键操作失败: {e}")
             raise
+
+    def get_url(self):
+        url = self.driver.current_url
+        return url
+
+    def ele_exist(self, *locator, timeout=None):
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located(locator)
+            )
+            ele = self.driver.find_element(*locator)
+            return ele.is_displayed()
+        except (TimeoutException, NoSuchElementException):
+            return False

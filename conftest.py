@@ -37,8 +37,8 @@ def login():
     username = login_data[0]["username"]
     password = login_data[0]["password"]
     login_page.login(username, password)
+    time.sleep(3)
 
-    print(f"[DEBUG] login fixture 开始初始化 driver, id={id(driver)}")
     yield driver
     driver.quit()
 
@@ -59,9 +59,12 @@ def pytest_runtest_makereport(item, call):
             driver.save_screenshot(file_name)
             print(f"\n[截图] 用例失败截图已保存：{file_name}")
 
-
-
-
+@pytest.fixture(scope="function")
+def go_user_mag(login):
+    from pages.user_mag.user_manage.invite_user import UserManage
+    user_mag = UserManage(login)
+    user_mag.module_user_mag()
+    return user_mag
 
 
 

@@ -1,4 +1,6 @@
 import os.path
+from datetime import datetime, timedelta
+
 import yaml
 
 
@@ -26,6 +28,11 @@ def load_yaml(file_name):
                 return data
         except Exception as e:
             print(f'Error loading YAML file: {e}')
+
+def tomorrow():
+    return (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+
+# print(tomorrow())
 
 
 # print(load_yaml('loginData.yaml'))

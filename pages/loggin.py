@@ -20,6 +20,8 @@ class LoginPage(BasePage):
         self.driver.find_element(By.TAG_NAME, "body").click()
         self.click(*login.login_button, timeout= 3)
 
+
+
     def get_right_message(self):
         text =  self.get_text(*login.right_message, timeout= 3)
         print("[DEBUG] 正在查找元素:", text)

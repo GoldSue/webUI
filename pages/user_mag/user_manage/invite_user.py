@@ -2,13 +2,18 @@ import time
 
 from base.base import BasePage
 from elements.user_mag_ele.invite_user_ele import InviteUser as invite
-
+from pages.home_page import HomePage
 
 class UserManage(BasePage):
 
+    def module_user_mag(self):
+        home_page = HomePage(self.driver)
+
+        home_page.get_home_page()
+        home_page.go_to_module(*invite.user_mag_module,module_name="用户管理")
+
+
     def invite_user(self):
-        time.sleep(2)
-        self.click(*invite.user_mag_module, timeout=3)
         time.sleep(1)
         self.click(*invite.invite_user_button)
         self.click(*invite.invite_user)
@@ -17,6 +22,7 @@ class UserManage(BasePage):
         self.click(*invite.invite_user_out)
         self.send_keys("我邀请你",*invite.invite_cotent)
         self.click(*invite.invite_send)
+
     def assert_invite_success(self):
         return self.get_text(*invite.assert_invite_sucess)
 
@@ -29,6 +35,7 @@ class UserManage(BasePage):
 
 
     def gen_invite_url(self):
+
         self.click(*invite.invite_user_button)
         self.click(*invite.gene_invite_url)
 
