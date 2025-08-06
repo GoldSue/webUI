@@ -1,4 +1,6 @@
 import os.path
+import random
+import string
 from datetime import datetime, timedelta
 
 import yaml
@@ -32,9 +34,29 @@ def load_yaml(file_name):
 def tomorrow():
     return (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
 
-# print(tomorrow())
 
+def random_digits(n=6):
+    return ''.join(random.choices(string.digits, k=n))
 
-# print(load_yaml('loginData.yaml'))
+def random_letters(n=6):
+    return ''.join(random.choices(string.ascii_letters, k=n))
 
-# to_dirname('testcase')
+def random_letters_digits(n=8):
+    if n < 3:
+        raise ValueError("长度必须 >= 3，才能包含大小写字母和数字各至少一位")
+
+    # 至少各1位
+    lower = random.choice(string.ascii_lowercase)
+    upper = random.choice(string.ascii_uppercase)
+    digit = random.choice(string.digits)
+
+    # 剩下的位数，从混合池中选择
+    remaining = random.choices(string.ascii_letters + string.digits, k=n - 3)
+    # 合并并打乱顺序
+    password_list = list(lower + upper + digit + ''.join(remaining))
+    random.shuffle(password_list)
+    return ''.join(password_list)
+
+# print(random_digits(3))
+# print(random_letters(3))
+# print(random_letters_digits(8))
