@@ -1,0 +1,15 @@
+- case: add_cop_user
+  data:
+    userID: 885888
+    username: 测试cop用户
+    password: Aa123456
+
+- case: edit_cop_user
+  data:
+    userID: 88588877
+
+- case: delete_cop_user
+  data:
+    userID: 88588877
+
+

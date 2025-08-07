@@ -57,6 +57,27 @@ def random_letters_digits(n=8):
     random.shuffle(password_list)
     return ''.join(password_list)
 
+
+def get_case_data(moudle_name,file_name, case_name):
+    file_path = os.path.join(get_root(), 'data',moudle_name, file_name)
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f'File not found: {file_path}')
+
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data_list = yaml.safe_load(file)
+
+            for case in data_list:
+                if case.get("case") == case_name:
+                    return case.get("data")
+
+            return None  # 如果没有找到匹配的 case
+
+    except Exception as e:
+        print(f'Error loading YAML file: {e}')
+        return None
 # print(random_digits(3))
 # print(random_letters(3))
 # print(random_letters_digits(8))
+print(get_case_data('user_mag_data','add_cop_user.yaml', 'edit_cop_user'))

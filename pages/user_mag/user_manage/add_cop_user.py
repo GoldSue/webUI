@@ -18,5 +18,15 @@ class AddCopUser(BasePage):
     def assert_add_cop_success(self):
         return self.get_text(*addcop.assert_add_cop_success)
 
+    def search_cop_user(self):
+        self.send_keys("qq", *addcop.input_user_id)
+        self.click(*addcop.search_user)
+    def assert_search_cop_success(self):
+        return self.get_text(*addcop.assert_add_cop_success)
+
+    def edit_cop_user(self):
+        pass
+
+
     def close_add(self):
         self.click(*addcop.close_add)
