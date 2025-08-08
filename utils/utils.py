@@ -33,7 +33,8 @@ def load_yaml(file_name):
 
 def tomorrow():
     return (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
-
+def month_later():
+    return (datetime.now() + timedelta(days=30)).strftime('%Y-%m-%d')
 
 def random_digits(n=6):
     return ''.join(random.choices(string.digits, k=n))
@@ -58,26 +59,62 @@ def random_letters_digits(n=8):
     return ''.join(password_list)
 
 
-def get_case_data(moudle_name,file_name, case_name):
-    file_path = os.path.join(get_root(), 'data',moudle_name, file_name)
+def get_case_data(module_name, file_name, case_name=None, return_list=False):
+    """
+    从 data/<module_name>/<file_name> 中读取测试数据。
+    - 如果 YAML 是列表形式（多数用例文件会是这种），按 "case" 字段匹配并返回对应的 "data"。
+    - case_name 为 None 时，返回该文件中所有 case 的 data（列表）。
+    - 如果 return_list=True，总是返回匹配项的列表（可能为空）。
+    - 返回单项时，若找不到匹配返回 None。
+    """
+    file_path = os.path.join(get_root(), 'data', module_name, file_name)
 
     if not os.path.exists(file_path):
         raise FileNotFoundError(f'File not found: {file_path}')
 
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            data_list = yaml.safe_load(file)
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = yaml.safe_load(f)
 
-            for case in data_list:
-                if case.get("case") == case_name:
-                    return case.get("data")
+        # 空文件或解析为 None
+        if content is None:
+            return [] if return_list else None
 
-            return None  # 如果没有找到匹配的 case
+        # 情形 A: YAML 顶层是 list（最常见）
+        if isinstance(content, list):
+            # 收集所有匹配 case 的 data（注意 data 可能是 dict 或 list）
+            matches = []
+            for item in content:
+                if not isinstance(item, dict):
+                    continue
+                if case_name is None:
+                    # 收集所有 case 的 data
+                    matches.append(item.get('data'))
+                else:
+                    if item.get('case') == case_name:
+                        matches.append(item.get('data'))
+            if return_list:
+                return matches
+            # 若要求单条，返回第一个匹配或全部中的第一项
+            if case_name is None:
+                return matches  # 当 case_name==None 时直接返回所有 data 列表
+            return matches[0] if matches else None
+
+        # 情形 B: YAML 顶层是 dict（少见，但兼容）
+        if isinstance(content, dict):
+            if case_name is None:
+                return content
+            # 直接取 keyed dict 的值（兼容你原来的写法）
+            return content.get(case_name)
+
+        # 其它类型不支持
+        return None
 
     except Exception as e:
+        # 日志打印或抛出，根据项目约定处理
         print(f'Error loading YAML file: {e}')
         return None
 # print(random_digits(3))
 # print(random_letters(3))
 # print(random_letters_digits(8))
-print(get_case_data('user_mag_data','add_cop_user.yaml', 'edit_cop_user'))
+# print(get_case_data('user_mag_data','add_cop_user.yaml', 'add_cop_user'))

@@ -10,7 +10,7 @@ class HomePage(BasePage):
         """如果当前不在首页，则跳转首页"""
         url = EnvConfig.get_base_url()
         if not self.is_on_page(url):
-            self.logger.info(f"🔄 跳转到首页")
+            # self.logger.info(f"🔄 跳转到首页")
             self.driver.get(url)
         else:
             self.logger.info("✅ 当前已在首页")
@@ -19,7 +19,7 @@ class HomePage(BasePage):
         """点击左侧导航栏模块按钮"""
         try:
             self.click(*nav_locator, timeout=3)
-            self.logger.info(f"✅ 已跳转到 [{module_name}] ")
+            # self.logger.info(f"✅ 已跳转到 [{module_name}] ")
         except Exception as e:
             self.logger.error(f"❌ 跳转到 [{module_name}] 模块失败: {e}")
             raise

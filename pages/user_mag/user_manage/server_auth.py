@@ -2,7 +2,7 @@ import time
 
 from base.base import BasePage
 from elements.user_mag_ele.server_auth_ele import ServerAuthEle
-from utils.utils import tomorrow
+from utils.utils import tomorrow, month_later
 
 
 class ServerAuth(BasePage):
@@ -31,16 +31,17 @@ class ServerAuth(BasePage):
 
     def proxy_auth(self):
         self.click(*ServerAuthEle.server_auth_button)
-        # self.click(*ServerAuthEle.gene_server_qcode)
+        self.click(*ServerAuthEle.gene_server_qcode)
         self.click(*ServerAuthEle.proxy_auth)
         self.click(*ServerAuthEle.long_time)
-        tomorrow_date = tomorrow()
-        self.send_keys(tomorrow_date,*ServerAuthEle.end_time)
+        month = month_later()
+        self.send_keys(month,*ServerAuthEle.end_time)
         self.tab(*ServerAuthEle.end_time)
         self.click(*ServerAuthEle.agree_agreement)
         self.click(*ServerAuthEle.gene_code_button)
 
     def assert_back_gene(self):
+        time.sleep(2)
         text = self.get_text(*ServerAuthEle.assert_back_gene)
         return text
 
