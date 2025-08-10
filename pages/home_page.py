@@ -13,7 +13,7 @@ class HomePage(BasePage):
             # self.logger.info(f"🔄 跳转到首页")
             self.driver.get(url)
         else:
-            self.logger.info("✅ 当前已在首页")
+            self.logger.info("当前已在首页")
 
     def go_to_module(self, *nav_locator, module_name="模块"):
         """点击左侧导航栏模块按钮"""

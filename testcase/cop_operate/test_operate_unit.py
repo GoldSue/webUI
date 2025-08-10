@@ -5,23 +5,19 @@ from config.logger import logger
 
 class TestOperateUnit():
 
-    def test_add_operate_unit(self,login,go_cop_operate):
+    def test_add_operate_unit(self,assert_log,login,go_cop_operate):
         operate_unit = OperateUnit(login)
         operate_unit.add_cop_()
         actual = operate_unit.assert_add_operate_unit_success()
         expected = "新增成功"
-        logger.info("✅ 实际结果：{}".format(actual))
-        logger.info("✅ 预期结果：{}".format(expected))
-        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
+        assert_log(expected, actual)
 
-    def test_edit_cop_operate_unit(self, login, go_cop_operate):
+    def test_edit_cop_operate_unit(self, assert_log,login, go_cop_operate):
         operate_unit = OperateUnit(login)
         operate_unit.edit_cop_operate_unit()
         actual = operate_unit.assert_edit_cop_success()
         expected = "修改成功"
-        logger.info("✅ 预期结果：{}".format(expected))
-        logger.info("✅ 实际结果：{}".format(actual))
-        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
+        assert_log(expected, actual)
 
     # def test_delete_cop_operate_unit(self, login):
     #     operate_unit = OperateUnit(login)
@@ -32,11 +28,9 @@ class TestOperateUnit():
     #     logger.info("✅ 实际结果：{}".format(actual))
     #     assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
 
-    def test_cop_setting(self, login, go_cop_operate):
+    def test_cop_setting(self, assert_log,login, go_cop_operate):
         operate_unit = OperateUnit(login)
         operate_unit.cop_setting()
         actual = operate_unit.assert_cop_setting_success()
         expected = "操作成功"
-        logger.info("✅ 预期结果：{}".format(expected))
-        logger.info("✅ 实际结果：{}".format(actual))
-        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
+        assert_log(expected, actual)

@@ -4,11 +4,13 @@ import time
 import pytest
 import undetected_chromedriver as uc
 from selenium.webdriver.chrome.options import Options
+
+from config.logger import logger
 from utils.utils import to_dirname
 from pages.loggin import LoginPage
 from elements.loginEle import LoginEle
 from utils.utils import load_yaml
-
+# import chromedriver-autoinstaller
 login_data= load_yaml('loginData.yaml')
 
 
@@ -19,6 +21,12 @@ def login_driver():
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("--start-maximized")
 
+    # options.add_argument("--headless=new")
+    # options.add_argument("--window-size=1920,1080")
+    # options.add_argument("--disable-gpu")
+    # options.add_argument("--disable-blink-features=AutomationControlled")
+    # options.add_argument("--start-maximized")
+
     driver = uc.Chrome(options=options)
     yield driver
     driver.quit()
@@ -27,6 +35,12 @@ def login():
     options = uc.ChromeOptions()
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("--start-maximized")
+
+    # options.add_argument("--headless=new")
+    # options.add_argument("--window-size=1920,1080")
+    # options.add_argument("--disable-gpu")
+    # options.add_argument("--disable-blink-features=AutomationControlled")
+    # options.add_argument("--start-maximized")
     prefs = {
         "credentials_enable_service": False,  # 禁用自动填充服务
         "profile.password_manager_enabled": False  # 禁用密码管理器
@@ -73,3 +87,20 @@ def go_cop_operate(login):
     cop_operate = OperateUnit(login)
     cop_operate.module_cop_operate()
     return cop_operate
+
+def assert_with_log(expected, actual):
+    """
+    通用断言方法：
+    - expected: 预期值（字符串）
+    - actual: 实际值（字符串）
+    """
+    if expected in actual:
+        logger.info(f"[PASS] ✅预期: {expected} | 实际: {actual}")
+    else:
+        logger.error(f"[FAIL] ❌预期: {expected} | 实际: {actual}")
+        raise AssertionError(f"[FAIL] ❌预期: {expected} | 实际: {actual}")
+
+# 注册为 pytest 全局函数
+@pytest.fixture
+def assert_log():
+    return assert_with_log

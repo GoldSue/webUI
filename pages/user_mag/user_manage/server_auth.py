@@ -17,7 +17,7 @@ class ServerAuth(BasePage):
             self.click(*ServerAuthEle.now_stop)
             self.click(*ServerAuthEle.stop_server_confirm)
         # time.sleep(1)
-        self.logger.info("✅ 开始选择有效时长并生成授权码")
+        # self.logger.info("✅ 开始选择有效时长并生成授权码")
         self.click(*ServerAuthEle.select_days)
         self.click(*ServerAuthEle.selected_days)
         self.click(*ServerAuthEle.gene_code)
