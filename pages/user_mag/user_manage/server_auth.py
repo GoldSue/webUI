@@ -9,19 +9,18 @@ class ServerAuth(BasePage):
 
     def gene_server_qcode(self):
         self.click(*ServerAuthEle.server_auth_button)
-        time.sleep(1)
+        # time.sleep(1)
         self.click(*ServerAuthEle.gene_server_qcode, timeout=2)
         # 如果是重复点击为展开窗口，可加注释
         if self.ele_exist(*ServerAuthEle.gene_code, timeout=2):
-            self.logger.info("⚠️ 注意：已存在服务授权码")
+            # self.logger.info("⚠️ 注意：已存在服务授权码")
             self.click(*ServerAuthEle.now_stop)
             self.click(*ServerAuthEle.stop_server_confirm)
-        time.sleep(1)
+        # time.sleep(1)
         self.logger.info("✅ 开始选择有效时长并生成授权码")
         self.click(*ServerAuthEle.select_days)
         self.click(*ServerAuthEle.selected_days)
         self.click(*ServerAuthEle.gene_code)
-
         self.click_body()
 
 
@@ -31,7 +30,6 @@ class ServerAuth(BasePage):
 
     def proxy_auth(self):
         self.click(*ServerAuthEle.server_auth_button)
-        self.click(*ServerAuthEle.gene_server_qcode)
         self.click(*ServerAuthEle.proxy_auth)
         self.click(*ServerAuthEle.long_time)
         month = month_later()
@@ -41,7 +39,7 @@ class ServerAuth(BasePage):
         self.click(*ServerAuthEle.gene_code_button)
 
     def assert_back_gene(self):
-        time.sleep(2)
+        # time.sleep(2)
         text = self.get_text(*ServerAuthEle.assert_back_gene)
         return text
 

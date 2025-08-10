@@ -37,7 +37,7 @@ def login():
     username = login_data[0]["username"]
     password = login_data[0]["password"]
     login_page.login(username, password)
-    time.sleep(3)
+    time.sleep(2)
 
     yield driver
     driver.quit()
@@ -67,4 +67,9 @@ def go_user_mag(login):
     return user_mag
 
 
-
+@pytest.fixture(scope="function")
+def go_cop_operate(login):
+    from pages.cop_operate.operate_unit import OperateUnit
+    cop_operate = OperateUnit(login)
+    cop_operate.module_cop_operate()
+    return cop_operate

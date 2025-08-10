@@ -3,7 +3,7 @@ import pytest
 
 
 if __name__ == '__main__':
-    # pytest.main (['-v','-s','testcase/user_mag/user_mag_title/test_server_auth.py'])
+    # pytest.main (['-v','-s','testcase/cop_operate/test_title_main.py'])
     # pytest.main (['-v','-s','testcase/test_login.py'])
     pytest.main (['-v','-s','testcase/'])
 

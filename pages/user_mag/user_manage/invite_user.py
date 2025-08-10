@@ -14,7 +14,7 @@ class UserManage(BasePage):
 
 
     def invite_user(self):
-        time.sleep(1)
+        # time.sleep(1)
         self.click(*invite.invite_user_button)
         self.click(*invite.invite_user)
         self.send_keys(2222,*invite.invite_user_id)

@@ -8,7 +8,6 @@ class InviteUser():
     user_mag_module = (By.XPATH, "//span[text()='用户管理']")
     invite_user_button = (By.XPATH, "//span[text()='邀请用户']")
     invite_user = (By.XPATH, "//a[@angularticscategory='用戶管理-邀請']")
-    time.sleep(2)
     invite_user_id = (By.XPATH, "//input[@id='user']")
     user_quality = (By.XPATH, "//nz-select-item[@class='ant-select-selection-item ng-star-inserted'and (@title='一般用户' or @title='外部用户')]")
     invite_user_out = (By.XPATH, "//div[text()='外部用户' ]")

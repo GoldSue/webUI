@@ -15,7 +15,7 @@ class TestAddCopUser():
         logger.info(f"✅ 实际：{actual}")
         expected = expected
         logger.info(f"✅ 预期：{actual}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
 
     def test_search_cop_user(self, login, go_user_mag):
         search_cop_user = CopUser(login)
@@ -24,7 +24,7 @@ class TestAddCopUser():
         expected = "共1笔记录"
         logger.info(f"✅ 实际结果：{actual}")
         logger.info(f"✅ 预期结果：{expected}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
     def test_edit_cop_user(self, login, go_user_mag):
         cop_user = CopUser(login)
         cop_user.edit_cop_user()
@@ -32,7 +32,7 @@ class TestAddCopUser():
         expected = "修改成功"
         logger.info(f"✅ 实际结果：{actual}")
         logger.info(f"✅ 预期结果：{expected}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
 
     def test_stop_cop_user(self, login, go_user_mag):
         cop_user = CopUser(login)
@@ -41,7 +41,7 @@ class TestAddCopUser():
         expected = "停用成功"
         logger.info(f"✅ 实际结果：{actual}")
         logger.info(f"✅ 预期结果：{expected}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
     #
     def test_start_cop_user(self, login, go_user_mag):
         cop_user = CopUser(login)
@@ -50,7 +50,7 @@ class TestAddCopUser():
         expected = "启用成功"
         logger.info(f"✅ 实际结果：{actual}")
         logger.info(f"✅ 预期结果：{expected}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
     #
     def test_delete_cop_user(self, login, go_user_mag):
         cop_user = CopUser(login)
@@ -59,6 +59,6 @@ class TestAddCopUser():
         expected = "用户已删除"
         logger.info(f"✅ 实际结果：{actual}")
         logger.info(f"✅ 预期结果：{expected}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
 
 

@@ -10,14 +10,14 @@ class TestServerAuth():
         logger.info(f"✅ 实际结果：{actual}")
         expected = '授权码产生成功'
         logger.info(f"✅ 预期结果：{actual}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
 
     def test_proxy_auth(self, login, go_user_mag):
         server_auth = ServerAuth(login)
         server_auth.proxy_auth()
         actual = server_auth.assert_back_gene()
-        logger.info(f"实际结果：{actual}")
+        logger.info(f"✅ 实际结果：{actual}")
         expected = '代理授权码'
-        logger.info(f"预期结果：{actual}")
-        assert expected in actual, f"断言失败！实际结果：{actual}"
+        logger.info(f"✅ 预期结果：{actual}")
+        assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
 

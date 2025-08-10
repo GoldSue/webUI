@@ -26,7 +26,6 @@ class CopUser(BasePage):
         return self.get_text(*addcop.assert_add_cop_success)
 
     def search_cop_user(self):
-        time.sleep(2)
         self.send_keys(add_user_data.get('userID'), *addcop.input_user_id, timeout=3)
         self.click(*addcop.search_user)
     def assert_search_cop_success(self):
@@ -34,20 +33,15 @@ class CopUser(BasePage):
 
     def edit_cop_user(self):
         self.search_cop_user()
-        time.sleep(1)
         self.click(*addcop.edit_user)
-        time.sleep(1)
-        self.send_keys(edit_user_data.get('username'), *addcop.edit_user_name)
-        time.sleep(2)
+        self.send_keys(edit_user_data.get('username'), *addcop.edit_user_name, timeout=4)
         self.click(*addcop.edit_save)
 
     def assert_edit_success(self):
         return self.get_text(*addcop.assert_edit_success)
 
     def stop_cop_user(self):
-        time.sleep(1)
         self.search_cop_user()
-        time.sleep(1)
         self.click(*addcop.stop_user)
         self.click(*addcop.stop_user_confirm)
 
@@ -56,16 +50,13 @@ class CopUser(BasePage):
 
     def start_cop_user(self):
         self.search_cop_user()
-        time.sleep(1)
         self.click(*addcop.start_user)
 
     def assert_start_success(self):
         return self.get_text(*addcop.assert_start_success)
 
     def delete_cop_user(self):
-        time.sleep(1)
         self.stop_cop_user()
-        time.sleep(1)
         self.click(*addcop.delete_user)
         self.click(*addcop.delete_user_confirm)
 
