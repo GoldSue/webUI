@@ -1,15 +1,21 @@
+import allure
+
 from conftest import assert_with_log
 from pages.user_mag.user_manage.server_auth import ServerAuth
 from config.logger import logger
-
+@allure.feature('用户管理')
 class TestServerAuth():
 
+    @allure.story('用户管理')
+    @allure.title('产生服务授权码')
     def test_server_auth(self,login, go_user_mag):
         server_auth = ServerAuth(login)
         server_auth.gene_server_qcode()
         actual = server_auth.assert_server_qcode()
         assert_with_log("授权码产生成功", actual)
 
+    @allure.story('用户管理')
+    @allure.title('代理授')
     def test_proxy_auth(self,login, go_user_mag):
         server_auth = ServerAuth(login)
         server_auth.proxy_auth()

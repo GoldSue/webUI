@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from config.logger import logger
@@ -6,8 +7,9 @@ from pages.loggin import LoginPage
 from config.logger import logger
 login_data = load_yaml("loginData.yaml") or []
 
-
+@allure.feature('用户登录')
 class TestLogin:
+    @allure.story('用户登录')
     @pytest.mark.parametrize("data", login_data, ids=[data["case"] for data in login_data])
     def test_login(self, assert_log, data, login_driver):
         login_page = LoginPage(login_driver)

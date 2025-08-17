@@ -1,17 +1,22 @@
+import allure
+
 from conftest import assert_with_log
 from pages.cop_operate.operate_unit import OperateUnit
 from config.logger import logger
 
 
-
+@allure.feature('企业运营')
 class TestOperateUnit():
-
+    @allure.story('运营单元')
+    @allure.title('新增公司')
     def test_add_operate_unit(self,login,go_cop_operate):
         operate_unit = OperateUnit(login)
         operate_unit.add_cop_()
         actual = operate_unit.assert_add_operate_unit_success()
         assert_with_log("新增成功", actual)
 
+    @allure.story('运营单元')
+    @allure.title('修改公司')
     def test_edit_cop_operate_unit(self,login, go_cop_operate):
         operate_unit = OperateUnit(login)
         operate_unit.edit_cop_operate_unit()
@@ -26,7 +31,8 @@ class TestOperateUnit():
     #     logger.info("✅ 预期结果：{}".format(expected))
     #     logger.info("✅ 实际结果：{}".format(actual))
     #     assert expected in actual, f"❌ 断言失败！实际结果：{actual}"
-
+    @allure.story('运营单元')
+    @allure.title('设置公司')
     def test_cop_setting(self,login, go_cop_operate):
         operate_unit = OperateUnit(login)
         operate_unit.cop_setting()
