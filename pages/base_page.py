@@ -56,9 +56,8 @@ class BasePage():
         for attempt in range(retry):
             try:
                 element = self._wait_interactable(*locator, timeout=timeout, buffer=buffer)
-                # 自动滚动到元素可见位置
                 self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
-                time.sleep(0.2)  # 给渲染一点时间
+                time.sleep(0.2)
                 element.click()
                 return
             except StaleElementReferenceException:
@@ -67,14 +66,18 @@ class BasePage():
                     continue
                 raise
             except Exception as e:
-                self.logger.error(f"常规点击失败，尝试 JS 点击: {locator}，原因: {e}")
+                # 常规点击失败，不打大段堆栈，只简要提示
+                self.logger.info(f"常规点击失败，尝试 JS 点击: {locator} )")
                 try:
                     element = self.driver.find_element(*locator)
                     self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
                     self.driver.execute_script("arguments[0].click();", element)
+                    self.logger.debug(f"JS 点击成功: {locator}")
                     return
                 except Exception as e2:
-                    raise Exception(f"JS 点击也失败: {locator}，原因: {e2}")
+                    # JS 兜底也失败 → 打完整异常方便排查
+                    self.logger.error(f"JS 点击也失败: {locator}", exc_info=True)
+                    raise
 
     def send_keys(self, text, *locator, timeout=5, buffer=0.2, retry=3):
         """智能输入：防 DOM 刷新 → 常规输入 → JS 兜底"""
@@ -167,15 +170,12 @@ class BasePage():
         except (TimeoutException, NoSuchElementException):
             return False
 
-    def wait_mask_disappear(self, timeout=3):
-        """等待 Ant Design 遮罩层消失（drawer、modal）"""
+    def wait_mask_disappear(self, timeout=5):
         try:
-            WebDriverWait(self.driver, timeout).until_not(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".ant-drawer-mask ng-star-inserted"))
+            WebDriverWait(self.driver, timeout).until(
+                EC.invisibility_of_element_located((By.CSS_SELECTOR, ".ant-drawer-mask"))
             )
-            WebDriverWait(self.driver, timeout).until_not(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".ant-drawer-mask ng-star-inserted"))
-            )
+            # self.logger.info("遮罩层已完全消失")
         except TimeoutException:
             self.logger.warning("遮罩层未在预期时间内消失，继续执行点击")
 

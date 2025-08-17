@@ -81,6 +81,10 @@ class CopOrgan(BasePage):
         self.go_to_cop_organ()
         self.search_dep()
         self.click(*CopOrganEle.dep_member)
+        if self.ele_exist(*CopOrganEle.is_member_exit, timeout=2):
+            self.click(*CopOrganEle.delete_search_selected)
+            self.click(*CopOrganEle.delete_member_delete)
+            self.click(*CopOrganEle.delete_member_confirm)
         self.click(*CopOrganEle.add_member)
         self.click(*CopOrganEle.add_member_name)
         self.send_keys("9999",*CopOrganEle.add_member_search)
@@ -96,6 +100,7 @@ class CopOrgan(BasePage):
 
     def edit_dep_member(self):
         self.wait_mask_disappear(timeout=5)
+        time.sleep(0.5)
         self.go_to_cop_organ()
         self.search_dep()
         self.click(*CopOrganEle.dep_member)
@@ -125,7 +130,7 @@ class CopOrgan(BasePage):
         self.click(*CopOrganEle.add_deter_level)
         self.send_keys(random_digits(4), *CopOrganEle.add_deter_level_id)
         self.send_keys(random_digits(2), *CopOrganEle.add_deter_level_name)
-        self.send_keys(random_digits(3), *CopOrganEle.add_deter_level_order)
+        self.send_keys(random_digits(4), *CopOrganEle.add_deter_level_order)
         self.click(*CopOrganEle.add_deter_level_save)
 
     def assert_add_deter_level_success(self):
@@ -137,7 +142,7 @@ class CopOrgan(BasePage):
         self.click(*CopOrganEle.member_derter_level)
         self.click(*CopOrganEle.edit_deter_level)
         self.send_keys(random_letters(2), *CopOrganEle.edit_deter_level_name)
-        self.send_keys(random_digits(3), *CopOrganEle.edit_deter_level_order)
+        self.send_keys(random_digits(4), *CopOrganEle.edit_deter_level_order)
         self.click(*CopOrganEle.edit_deter_level_save)
 
     def assert_edit_deter_level(self):

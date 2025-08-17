@@ -15,7 +15,7 @@ login_data= load_yaml('loginData.yaml')
 
 
 
-def get_driver(headless=False):
+def get_driver(headless=True):
     """
     创建并返回 Chrome Driver
     :param headless: 是否无头模式

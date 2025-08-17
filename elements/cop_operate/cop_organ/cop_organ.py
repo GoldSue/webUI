@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class CopOrganEle():
-    # wait_mask_dis = (By.XPATH, "//button[contains(@class,'ant-drawer-close')]")
+    wait_mask_dis = (By.XPATH, "//button[contains(@class,'ant-drawer-close')]")
     cop_organ_moudle = (By.XPATH, "//div[text()='企业组织']")
 
     add_dep = (By.XPATH, "//span[contains(text(),'新增部门')]")
@@ -65,6 +65,7 @@ class CopOrganEle():
 
     #新增部门成员
     dep_member = (By.XPATH, "(//a[text()=' 部门成员 '])[1]")
+    is_member_exit = (By.XPATH, "//td[text()='我才是主管(9999)']")
     add_member = (By.XPATH, "//span[text()=' 新增 ']")
     add_member_name = (By.XPATH, "//input[@placeholder='请选择员工名称']")
     add_member_search = (By.XPATH, "(//input[@placeholder='请输入ID或名称'])[3]")
@@ -114,7 +115,7 @@ class CopOrganEle():
 
     #删除层级
     delete_derter_level = (By.XPATH, "//span[text()='人员核决层级']")
-    delete_deter_level = (By.XPATH, "(//a[text()='删除'])[3]")
+    delete_deter_level = (By.XPATH, "(//a[text()='删除'])[last()]")
     delete_deter_level_confirm = (By.XPATH, "//span[text()=' 确定 ']")
     assert_delete_deter_level_success = (By.XPATH, "//span[text()='删除成功']")
 

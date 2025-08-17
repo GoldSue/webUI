@@ -8,7 +8,7 @@ class FieldManageEle():
 
     # 新增场域
     add_field = (By.XPATH, "//a[text()='新增场域 ']")
-    add_field_type = (By.XPATH, "//nz-select-placeholder")
+    add_field_type = (By.XPATH, "(//nz-select-top-control)[2]")
     add_field_type_selected = (By.XPATH, "//div[text()='营运域']")
     add_field_id = (By.XPATH, "//input[@placeholder='请输入ID']")
     add_field_name = (By.XPATH, "//input[@placeholder='请输入场域名称']")
