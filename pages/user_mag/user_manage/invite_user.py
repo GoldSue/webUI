@@ -1,6 +1,4 @@
-import time
-
-from base.base import BasePage
+from pages.base_page import BasePage
 from elements.user_mag_ele.invite_user_ele import InviteUser as invite
 from pages.home_page import HomePage
 
@@ -14,7 +12,6 @@ class UserManage(BasePage):
 
 
     def invite_user(self):
-        # time.sleep(1)
         self.click(*invite.invite_user_button)
         self.click(*invite.invite_user)
         self.send_keys(2222,*invite.invite_user_id)
@@ -26,13 +23,14 @@ class UserManage(BasePage):
     def assert_invite_success(self):
         return self.get_text(*invite.assert_invite_sucess)
 
-    def invite_user_patch(self):
-        # self.click(*invite.invite_user_button)
-        # self.click(*invite.upload_file)
-        # self.click(*invite.send_file)
-        pass
+    def invite_user_batch(self):
+        self.click(*invite.invite_user_button)
+        self.click(*invite.invite_user_batch)
+        self.upload_file("data",invite.invite_user_file,"account_invite_template_weChat_CN.xlsx")
+        self.click(*invite.invite_user_batch_button)
 
-
+    def assert_batch_success(self):
+        return self.get_text(*invite.assert_batch_success)
 
     def gen_invite_url(self):
 

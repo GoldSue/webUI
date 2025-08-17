@@ -29,6 +29,6 @@ class FuncMainEle():
 
     #删除
     delete_func = (By.XPATH, "(//a[text()='删除'])[1]")
-    delete_func_confirm = (By.XPATH, "//span[text()='确定']")
+    delete_func_confirm = (By.XPATH, "//span[contains(text(),'确定')]")
     assert_delete_func_success = (By.XPATH, "//span[text()='删除成功']")
 

@@ -1,4 +1,4 @@
-from base.base import BasePage
+from pages.base_page import BasePage
 from elements.user_mag_ele.role_manage_ele import RoleManageEle
 from utils.utils import random_digits
 
@@ -16,6 +16,15 @@ class RoleManage(BasePage):
 
     def assert_add_role_success(self):
         return self.get_text(*RoleManageEle.assert_add_role_success)
+
+    def add_role_batch(self):
+        self.click(*RoleManageEle.role_manage_button)
+        self.click(*RoleManageEle.add_role_batch)
+        self.upload_file("data", RoleManageEle.add_role_batch_file, "import_role.xlsx")
+        self.click(*RoleManageEle.add_role_batch_button)
+
+    def assert_add_role_batch_success(self):
+        return self.get_text(*RoleManageEle.assert_add_role_batch_success)
 
     def edit_user(self):
         self.click(*RoleManageEle.role_manage_button)

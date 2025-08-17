@@ -1,5 +1,5 @@
 # from encodings.punycode import adapt
-
+from conftest import assert_with_log
 from pages.user_mag.user_manage.add_cop_user import CopUser
 from config.logger import logger
 
@@ -13,6 +13,12 @@ class TestAddCopUser():
         actual = op_user.assert_add_cop_success()
         expected = "新增成功"
         assert_log(expected, actual)
+
+    def test_add_cop_user_batch(self,login, go_user_mag):
+        op_user = CopUser(login)
+        op_user.add_cop_batch()
+        actual = op_user.assert_add_cop_batch_success()
+        assert_with_log("导入成功", actual)
 
     def test_search_cop_user(self, assert_log,login, go_user_mag):
         search_cop_user = CopUser(login)

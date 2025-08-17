@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.devtools.v85.log import clear
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils.utils import to_dirname, get_file
 
 from config.logger import logger
 
@@ -62,7 +63,7 @@ class BasePage():
                 return
             except StaleElementReferenceException:
                 if attempt < retry - 1:
-                    time.sleep(0.3)
+                    time.sleep(0.2)
                     continue
                 raise
             except Exception as e:
@@ -165,3 +166,39 @@ class BasePage():
             return ele.is_displayed()
         except (TimeoutException, NoSuchElementException):
             return False
+
+    def wait_mask_disappear(self, timeout=3):
+        """等待 Ant Design 遮罩层消失（drawer、modal）"""
+        try:
+            WebDriverWait(self.driver, timeout).until_not(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".ant-drawer-mask ng-star-inserted"))
+            )
+            WebDriverWait(self.driver, timeout).until_not(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".ant-drawer-mask ng-star-inserted"))
+            )
+        except TimeoutException:
+            self.logger.warning("遮罩层未在预期时间内消失，继续执行点击")
+
+    def upload_file(self, file_path,file_input_locator, file_name, timeout=10):
+        """
+        文件上传基础方法
+        :param driver: WebDriver 实例
+        :param file_input_locator: tuple, 文件输入框定位 (By.XPATH, "//input[@type='file']")
+        :param file_path: str, 本地文件绝对路径
+        :param timeout: 等待文件输入框可用的超时时间
+        """
+        file_path = get_file(file_path, file_name)
+        try:
+            # 等待文件输入框可见
+            file_input = WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located(file_input_locator)
+            )
+            # 发送本地文件路径
+            file_input.send_keys(file_path)
+        except TimeoutException:
+            raise TimeoutError(f"文件输入框 {file_input_locator} 未在 {timeout}s 内出现")
+        except Exception as e:
+            raise Exception(f"上传文件失败: {file_path}, 原因: {e}")
+
+
+

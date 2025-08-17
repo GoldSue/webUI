@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 
-from base.base import BasePage
+from pages.base_page import BasePage
 from config.env_config import EnvConfig
 
 

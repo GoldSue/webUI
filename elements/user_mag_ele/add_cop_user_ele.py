@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from base.base import BasePage
+from pages.base_page import BasePage
 
 
 class AddCopUser(BasePage):
@@ -15,7 +15,10 @@ class AddCopUser(BasePage):
     close_add = (By.XPATH, "//button[@aria-label='Close']")
 
     #批量添加企业用户
-
+    add_cop_batch = (By.XPATH, "//span[text()='批量导入企业用户']")
+    add_cop_batch_file = (By.XPATH, "//input[@type='file']")
+    add_cop_batch_button = (By.XPATH, "//span[text()='导入企业用户']")
+    assert_add_cop_batch_success = (By.XPATH, "//span[text()='导入成功']")
 
     #搜索
     input_user_id= (By.XPATH, "//input[@placeholder='请输入']")

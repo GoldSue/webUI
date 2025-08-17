@@ -16,10 +16,13 @@ def get_root():
         current_path = os.path.dirname(current_path)
     print(current_path)
     raise FileNotFoundError("找不到包含main.py的项目根目录")
-def to_dirname(file_name):
+def to_dirname(file_path):
     root = get_root()
-    return os.path.join(root, file_name)
+    return os.path.join(root, file_path)
 
+def get_file(file_path,file_name):
+    file_path = os.path.join(to_dirname(file_path), file_name)
+    return file_path
 def load_yaml(file_name):
     file_path = os.path.join(get_root(), 'data', file_name)
 
@@ -118,3 +121,4 @@ def get_case_data(module_name, file_name, case_name=None, return_list=False):
 # print(random_letters(3))
 # print(random_letters_digits(8))
 # print(get_case_data('user_mag_data','add_cop_user.yaml', 'add_cop_user'))
+print(get_file('data', 'area_corp_export_template_CN.xlsx'))

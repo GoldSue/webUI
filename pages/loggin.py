@@ -1,10 +1,7 @@
-import time
-
 from selenium.webdriver.common.by import By
 
-from base.base import BasePage
+from pages.base_page import BasePage
 from elements.loginEle import LoginEle as login
-import pytest
 
 
 class LoginPage(BasePage):

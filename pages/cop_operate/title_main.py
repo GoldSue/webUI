@@ -1,4 +1,4 @@
-from base.base import BasePage
+from pages.base_page import BasePage
 from elements.cop_operate.employee_manage.titlt_main_ele import TitleMainEle
 from utils.utils import random_digits
 

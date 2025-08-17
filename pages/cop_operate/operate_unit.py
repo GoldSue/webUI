@@ -1,6 +1,6 @@
 import time
 
-from base.base import BasePage
+from pages.base_page import BasePage
 from elements.cop_operate.opetate_unit.operate_unit_ele import OperateUnit as op
 from pages.home_page import HomePage
 from utils.utils import random_digits, random_letters
@@ -46,7 +46,7 @@ class OperateUnit(BasePage):
     def cop_setting(self):
         self.click(*op.cop_operate_unit_setting)
         self.click(*op.cop_operate_unit_setting_add)
-        time.sleep(1)
+        # time.sleep(1)
         self.click(*op.cop_type)
         self.click(*op.cop_type_select)
         self.send_keys(random_digits(6), *op.cop_code)

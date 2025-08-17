@@ -1,7 +1,4 @@
-import time
-
-from base.base import BasePage
-from elements.cop_operate.employee_manage.employee_manage_ele import EmployeManage
+from pages.base_page import BasePage
 from elements.cop_operate.employee_manage.employee_manage_ele import EmployeManage
 from utils.utils import random_digits
 
@@ -15,6 +12,15 @@ class EmployeeMag(BasePage):
         self.send_keys(random_digits(5), *EmployeManage.add_employee_name)
         self.click(*EmployeManage.add_employ_save)
         self.click(*EmployeManage.add_employee_confirm)
+
+    def add_employ_batch(self):
+        self.click(*EmployeManage.employee_manage_button)
+        self.click(*EmployeManage.add_emloyee_batch)
+        self.upload_file("data",EmployeManage.add_employee_batch_file,"emp_export_template_CN.xlsx")
+        self.click(*EmployeManage.add_employee_batch_button)
+
+    def assert_add_employee_batch_success(self):
+        return self.get_text(*EmployeManage.assert_add_employee_batch_success)
 
     def assert_add_employee_success(self):
         return self.get_text(*EmployeManage.assert_add_employee_success)

@@ -1,6 +1,6 @@
 import time
 
-from base.base import BasePage
+from pages.base_page import BasePage
 from elements.user_mag_ele.user_group_ele import UserGroupEle
 from utils.utils import random_digits
 
@@ -15,7 +15,7 @@ class UserGroup(BasePage):
         self.click(*UserGroupEle.add_user_group_save)
 
     def assert_add_user_group_success(self):
-        time.sleep(0.5)
+        # time.sleep(0.5)
         return self.get_text(*UserGroupEle.assert_add_user_group_success, timeout=2)
 
     def add_child_user_group(self):

@@ -29,4 +29,9 @@ class InviteUser():
     send_email_button = (By.XPATH, "//span[text()='发送邮件通知' ]")
     assert_email_seccess = (By.XPATH, "//span[text()='通知信件发送成功' ]")
 
+    invite_user_batch = (By.XPATH, "//span[text()='批量邀请']")
+    invite_user_file = (By.XPATH, "//input[@type='file']")
+    invite_user_batch_button = (By.XPATH, "//button[@angularticsaction='點擊送出批量邀請' ]")
+    assert_batch_success = (By.XPATH, "//span[text()='邀请发起成功' ]")
+
 

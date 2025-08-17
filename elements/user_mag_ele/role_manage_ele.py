@@ -11,6 +11,10 @@ class RoleManageEle():
     save_role_button = (By.XPATH, "//span[text()='储存']")
     assert_add_role_success = (By.XPATH, "//span[contains(text(),'新增成功')]")
 
+    add_role_batch = (By.XPATH, "//span[text()='导入']")
+    add_role_batch_file = (By.XPATH, "//input[@type='file']")
+    add_role_batch_button = (By.XPATH, "//span[text()='送出']")
+    assert_add_role_batch_success = (By.XPATH, "//span[text()='导入成功']")
 
     #编辑用户
     edit_user_button = (By.XPATH, "(//a[contains(text(),'编辑')])[1]")

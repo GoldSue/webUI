@@ -1,8 +1,8 @@
 import time
 
-from base.base import BasePage
+from pages.base_page import BasePage
 from elements.user_mag_ele.add_cop_user_ele import AddCopUser as addcop
-from utils.utils import random_digits, random_letters_digits, random_letters, get_case_data
+from utils.utils import get_case_data
 
 
 add_user_data = get_case_data('user_mag_data','add_cop_user.yaml', 'add_cop_user')
@@ -15,6 +15,7 @@ class CopUser(BasePage):
     def add_cop_user(self):
         self.click(*addcop.add_cop_button)
         self.click(*addcop.add_cop)
+        # time.sleep(2)
         self.click(*addcop.add_new_cop)
 
         self.send_keys(add_user_data.get('userID'), *addcop.user_id)
@@ -24,6 +25,15 @@ class CopUser(BasePage):
 
     def assert_add_cop_success(self):
         return self.get_text(*addcop.assert_add_cop_success)
+
+    def add_cop_batch(self):
+        self.click(*addcop.add_cop_button)
+        self.click(*addcop.add_cop_batch)
+        self.upload_file('data', addcop.add_cop_batch_file, 'enterprise_user_import_weChat_CN.xlsx')
+        self.click(*addcop.add_cop_batch_button)
+
+    def assert_add_cop_batch_success(self):
+        return self.get_text(*addcop.assert_add_cop_batch_success)
 
     def search_cop_user(self):
         self.send_keys(add_user_data.get('userID'), *addcop.input_user_id, timeout=3)

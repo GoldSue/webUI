@@ -11,6 +11,12 @@ class EmployeManage():
     add_employee_confirm = (By.XPATH, "//span[text()=' 确定保存 ']")
     assert_add_employee_success = (By.XPATH, "//span[text()='新增成功']")
 
+    #导入员工
+    add_emloyee_batch = (By.XPATH, "//span[text()='导入']")
+    add_employee_batch_file = (By.XPATH, "//input[@type='file']")
+    add_employee_batch_button = (By.XPATH, "//span[text()='导入员工']")
+    assert_add_employee_batch_success = (By.XPATH, "//span[text()='导入成功']")
+
     #员工修改
     edit_employee = (By.XPATH, "(//a[text()='修改'])[1]")
     edit_employee_name = (By.XPATH, "//input[@formcontrolname='employeeName']")

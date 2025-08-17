@@ -1,6 +1,7 @@
 import time
 
 from config.logger import logger
+from conftest import assert_with_log
 from pages.user_mag.user_manage.invite_user import UserManage
 
 
@@ -8,11 +9,17 @@ class TestUserManage():
 
     def test_invite_user(self,assert_log,login,go_user_mag):
         user_manage = UserManage(login)
-        logger.info("开始测试用户管理-邀请用户")
         user_manage.invite_user()
         actual = user_manage.assert_invite_success()
         expected = '邀请发起成功'
         assert_log(expected, actual)
+
+    def test_invite_user_batch(self,assert_log,login,go_user_mag):
+        user_manage = UserManage(login)
+        user_manage.invite_user_batch()
+        actual = user_manage.assert_batch_success()
+        assert_with_log("邀请发起成功", actual)
+
 
     def test_send_invite_url(self,assert_log,login,go_user_mag):
         user_manage = UserManage(login)
