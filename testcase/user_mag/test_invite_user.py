@@ -14,19 +14,18 @@ class TestUserManage():
         expected = '邀请发起成功'
         assert_log(expected, actual)
 
-    def test_invite_user_batch(self,assert_log,login,go_user_mag):
+    def test_invite_user_batch(self,login,go_user_mag):
         user_manage = UserManage(login)
         user_manage.invite_user_batch()
         actual = user_manage.assert_batch_success()
         assert_with_log("邀请发起成功", actual)
 
 
-    def test_send_invite_url(self,assert_log,login,go_user_mag):
+    def test_send_invite_url(self,login,go_user_mag):
         user_manage = UserManage(login)
         logger.info("开始测试用户管理-生成邀请用户链接")
         user_manage.gen_invite_url()
         actual = user_manage.assert_email_success()
-        expected = '通知信件发送成功'
-        assert_log(expected, actual)
+        assert_with_log("通知信件发送成功", actual)
 
 
