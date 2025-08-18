@@ -95,7 +95,7 @@ class BasePage():
                     continue
                 raise
             except Exception as e:
-                self.logger(f"常规输入失败，尝试 JS 输入: {locator}，原因: {e}")
+                self.logger.error(f"常规输入失败，尝试 JS 输入: {locator}，原因: {e}")
                 self.js_set_value(text, *locator)
                 return
 

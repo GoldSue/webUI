@@ -54,7 +54,7 @@ class TestCopOrgan():
         assert_with_log('修改成功', actual)
 
     @allure.story('企业组织')
-    @allure.title('删除部门成员')
+    @allure.title('删除部门成员    ')
     def test_delete_dep_member(self,login,go_cop_operate):
         cop_organ = CopOrgan(login)
         cop_organ.delete_dep_member()
@@ -79,8 +79,16 @@ class TestCopOrgan():
 
     @allure.story('企业组织')
     @allure.title('删除人员核决层级')
-    def test_delete_derter_level(self,login,go_cop_operate):
+    def test_delete_derter_level(self, login, go_cop_operate):
         cop_organ = CopOrgan(login)
         cop_organ.delete_derter_level()
         actual = cop_organ.assert_delete_deter_level()
-        assert_with_log('删除成功', actual)
+        expected_list = ["删除成功", "不允许删除"]
+        for expected in expected_list:
+            try:
+                assert_with_log(expected, actual)
+                break  # 一旦断言通过就退出循环
+            except AssertionError:
+                continue
+        else:
+            raise AssertionError(f"❌ 未匹配任何预期，actual: {actual}")

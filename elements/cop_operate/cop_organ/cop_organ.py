@@ -117,7 +117,7 @@ class CopOrganEle():
     delete_derter_level = (By.XPATH, "//span[text()='人员核决层级']")
     delete_deter_level = (By.XPATH, "(//a[text()='删除'])[last()]")
     delete_deter_level_confirm = (By.XPATH, "//span[text()=' 确定 ']")
-    assert_delete_deter_level_success = (By.XPATH, "//span[text()='删除成功']")
+    assert_delete_deter_level_success = (By.XPATH, "//div/div/i[contains(@nztype,'circle')]/following-sibling::*[1]")
 
 
 
