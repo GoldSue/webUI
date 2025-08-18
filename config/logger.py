@@ -5,6 +5,7 @@ from datetime import datetime
 if not os.path.exists("logs"):
     os.mkdir("logs")
 
+
 log_file = os.path.join("logs", f"{datetime.now().strftime('%Y-%m-%d')}.log")
 
 logger = logging.getLogger(__name__)
