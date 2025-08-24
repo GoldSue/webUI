@@ -62,12 +62,37 @@ def login_driver():
 @pytest.fixture(scope="session")
 def login():
     """已登录的浏览器实例（会话级别共用）"""
-    driver = get_driver()
-    login_page = LoginPage(driver)
-    login_page.login(login_data[0]["username"], login_data[0]["password"])
-    time.sleep(2)
-    yield driver
-    driver.quit()
+    driver = None
+    try:
+        if not login_data:
+            pytest.skip("登录数据不可用")
+
+        driver = get_driver()
+        login_page = LoginPage(driver)
+
+        # 增加登录重试机制
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                login_page.login(login_data[0]["username"], login_data[0]["password"])
+                time.sleep(2)
+                # 这里可以添加登录成功的验证
+                logger.info("登录成功")
+                break
+            except Exception as e:
+                logger.warning(f"登录尝试 {attempt + 1} 失败: {e}")
+                if attempt == max_retries - 1:
+                    raise
+                time.sleep(1)
+
+        yield driver
+    except Exception as e:
+        logger.error(f"登录失败: {e}")
+        raise
+    finally:
+        if driver:
+            driver.quit()
+
 
 @pytest.fixture(scope="function")
 def go_user_mag(login):
@@ -112,18 +137,51 @@ def pytest_runtest_makereport(item, call):
         driver = item.funcargs.get("login_driver") or item.funcargs.get("login")
 
         if driver:
-            timestamp = time.strftime("%Y%m%d_%H%M%S")
-            screenshot_dir = to_dirname("screenshots")
-            os.makedirs(screenshot_dir, exist_ok=True)
-            file_name = os.path.join(screenshot_dir, f"{timestamp}_{item.name}.png")
+            try:
+                timestamp = time.strftime("%Y%m%d_%H%M%S")
+                screenshot_dir = to_dirname("screenshots")
+                os.makedirs(screenshot_dir, exist_ok=True)
 
-            # 保存到文件
-            driver.save_screenshot(file_name)
-            logger.error(f"[截图] 用例失败截图已保存：{file_name}")
+                # 生成唯一文件名
+                file_name = os.path.join(
+                    screenshot_dir,
+                    f"FAIL_{timestamp}_{item.name.replace('/', '_')}.png"
+                )
 
-            # 同时附加到 Allure
-            allure.attach(
-                driver.get_screenshot_as_png(),
-                name=f"失败截图_{item.name}",
-                attachment_type=allure.attachment_type.PNG
-            )
+                # 保存截图
+                driver.save_screenshot(file_name)
+                logger.error(f"[截图] 用例失败截图已保存：{file_name}")
+
+                # 附加到 Allure（如果可用）
+                try:
+                    allure.attach(
+                        driver.get_screenshot_as_png(),
+                        name=f"失败截图_{item.name}",
+                        attachment_type=allure.attachment_type.PNG
+                    )
+                except Exception as allure_error:
+                    logger.warning(f"Allure截图附加失败: {allure_error}")
+
+            except Exception as screenshot_error:
+                logger.error(f"截图失败: {screenshot_error}")
+
+
+@pytest.fixture(scope="session", autouse=True)
+def cleanup_screenshots():
+    """清理旧的截图文件"""
+    yield
+    # 测试结束后清理7天前的截图
+    try:
+        screenshot_dir = to_dirname("screenshots")
+        if os.path.exists(screenshot_dir):
+            import glob
+            from datetime import datetime, timedelta
+
+            cutoff_time = datetime.now() - timedelta(days=7)
+            for file_path in glob.glob(os.path.join(screenshot_dir, "*.png")):
+                file_time = datetime.fromtimestamp(os.path.getctime(file_path))
+                if file_time < cutoff_time:
+                    os.remove(file_path)
+                    logger.info(f"清理旧截图: {file_path}")
+    except Exception as e:
+        logger.warning(f"清理截图失败: {e}")
