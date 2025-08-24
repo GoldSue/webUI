@@ -14,6 +14,16 @@ class TestCopOrgan():
         assert_with_log('新增成功', actual)
 
     @allure.story('企业组织')
+    @allure.title('删除人员核决层级')
+    def test_delete_derter_level(self, login, go_cop_operate):
+        cop_organ = CopOrgan(login)
+        cop_organ.delete_derter_level()
+        actual = cop_organ.assert_delete_deter_level()
+        expected_list = ["删除成功", "不允许删除"]
+        assert actual in expected_list, f"❌ 未匹配任何预期，actual: {actual}"
+
+# ... 其余代码 ...
+    @allure.story('企业组织')
     @allure.title('新增子部门')
     def test_add_sub_dep(self, login,go_cop_operate):
         cop_organ = CopOrgan(login)
