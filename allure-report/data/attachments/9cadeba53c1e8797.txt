@@ -1,0 +1,1 @@
+[32mINFO    [0m config.logger:conftest.py:94 ✅ expected: 启用成功 | actual: 用户ID auto000005$qwerreee启用成功!

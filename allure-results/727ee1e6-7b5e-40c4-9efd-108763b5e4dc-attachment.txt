@@ -1,0 +1,2 @@
+[32mINFO    [0m config.logger:test_invite_user.py:33 开始测试用户管理-生成邀请用户链接
+[32mINFO    [0m config.logger:conftest.py:94 ✅ expected: 通知信件发送成功 | actual: 通知信件发送成功

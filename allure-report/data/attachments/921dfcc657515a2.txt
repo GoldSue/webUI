@@ -1,0 +1,17 @@
+[32mINFO    [0m WDM:logger.py:11 xdist worker is: gw1
+[32mINFO    [0m WDM:logger.py:11 ====== WebDriver manager ======
+[32mINFO    [0m WDM:logger.py:11 Get LATEST chromedriver version for google-chrome
+[32mINFO    [0m WDM:logger.py:11 Get LATEST chromedriver version for google-chrome
+[32mINFO    [0m WDM:logger.py:11 There is no [win64] chromedriver "139.0.7258.154" for browser google-chrome "139.0.7258" in cache
+[32mINFO    [0m WDM:logger.py:11 Get LATEST chromedriver version for google-chrome
+[32mINFO    [0m WDM:logger.py:11 WebDriver version 139.0.7258.154 selected
+[32mINFO    [0m WDM:logger.py:11 Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/139.0.7258.154/win32/chromedriver-win32.zip
+[32mINFO    [0m WDM:logger.py:11 About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/139.0.7258.154/win32/chromedriver-win32.zip
+[32mINFO    [0m WDM:logger.py:11 Driver downloading response is 200
+[32mINFO    [0m WDM:logger.py:11 Get LATEST chromedriver version for google-chrome
+[32mINFO    [0m WDM:logger.py:11 Driver has been saved in cache [C:\Users\14972\.wdm\gw1\drivers\chromedriver\win64\139.0.7258.154]
+[32mINFO    [0m config.logger:conftest.py:80 登录成功
+[32mINFO    [0m config.logger:home_page.py:16 当前已在首页
+[32mINFO    [0m config.logger:base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', "//span[text()='新增']") )
+[35mDEBUG   [0m config.logger:base_page.py:75 JS 点击成功: ('xpath', "//span[text()='新增']")
+[32mINFO    [0m config.logger:conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功

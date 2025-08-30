@@ -1,0 +1,1 @@
+[32mINFO    [0m config.logger:conftest.py:119 ✅ expected: 用户已删除 | actual: 用户已删除

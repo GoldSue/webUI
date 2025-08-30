@@ -1,0 +1,3 @@
+[32mINFO    [0m config.logger:base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', '(//label)[last()]') )
+[35mDEBUG   [0m config.logger:base_page.py:75 JS 点击成功: ('xpath', '(//label)[last()]')
+[32mINFO    [0m config.logger:conftest.py:94 ✅ expected: 删除成功 | actual: 删除成功

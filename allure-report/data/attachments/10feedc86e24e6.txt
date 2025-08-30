@@ -1,0 +1,2 @@
+[1m[31mERROR   [0m config.logger:conftest.py:96 ❌ expected: 删除成功 | actual: 该核决层级被使用，不允许删除！
+[32mINFO    [0m config.logger:conftest.py:94 ✅ expected: 不允许删除 | actual: 该核决层级被使用，不允许删除！

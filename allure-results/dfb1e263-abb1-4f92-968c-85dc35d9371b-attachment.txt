@@ -1,0 +1,31 @@
+[1m[31mERROR   [0m config.logger:base_page.py:98 常规输入失败，尝试 JS 输入: ('xpath', "//input[@formcontrolname='employeeName']")，原因: Message: element click intercepted: Element <input _ngcontent-xnk-c328="" nz-input="" formcontrolname="employeeName" class="ant-input ng-pristine ng-touched ng-valid" placeholder="请输入员工姓名"> is not clickable at point (693, 92). Other element would receive the click: <div class="ant-tabs-nav-wrap">...</div>
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x10dffc3+65331]
+	GetHandleVerifier [0x0x10e0004+65396]
+	(No symbol) [0x0xed3f63]
+	(No symbol) [0x0xf22ce0]
+	(No symbol) [0x0xf2109a]
+	(No symbol) [0x0xf1ebf2]
+	(No symbol) [0x0xf1dee1]
+	(No symbol) [0x0xf12645]
+	(No symbol) [0x0xf414dc]
+	(No symbol) [0x0xf120d4]
+	(No symbol) [0x0xf41754]
+	(No symbol) [0x0xf62bcb]
+	(No symbol) [0x0xf412d6]
+	(No symbol) [0x0xf10910]
+	(No symbol) [0x0xf11784]
+	GetHandleVerifier [0x0x13238b3+2439203]
+	GetHandleVerifier [0x0x131eae2+2419282]
+	GetHandleVerifier [0x0x110712a+225434]
+	GetHandleVerifier [0x0x10f6e08+159096]
+	GetHandleVerifier [0x0x10fdd5d+187597]
+	GetHandleVerifier [0x0x10e7ad8+96840]
+	GetHandleVerifier [0x0x10e7c62+97234]
+	GetHandleVerifier [0x0x10d277a+9962]
+	BaseThreadInitThunk [0x0x76b85d49+25]
+	RtlInitializeExceptionChain [0x0x77d7d2fb+107]
+	RtlGetAppContainerNamedObjectPath [0x0x77d7d281+561]
+
+[32mINFO    [0m config.logger:conftest.py:94 ✅ expected: 修改成功 | actual: 修改成功

@@ -1,0 +1,117 @@
+2025-08-30 11:38:20 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:40:15 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:42:02 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:42:53 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:43:31 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:44:33 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:44:34 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:44:34 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:44:34 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:44:34 [INFO] logger.py:32 日志初始化完成
+2025-08-30 11:44:47 [INFO] conftest.py:80 登录成功
+2025-08-30 11:44:47 [INFO] home_page.py:16 当前已在首页
+2025-08-30 11:44:47 [INFO] conftest.py:80 登录成功
+2025-08-30 11:44:47 [INFO] home_page.py:16 当前已在首页
+2025-08-30 11:44:47 [INFO] conftest.py:80 登录成功
+2025-08-30 11:44:47 [INFO] home_page.py:16 当前已在首页
+2025-08-30 11:44:49 [INFO] conftest.py:80 登录成功
+2025-08-30 11:44:49 [INFO] home_page.py:16 当前已在首页
+2025-08-30 11:44:54 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:44:55 [INFO] base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', "//span[text()='新增']") )
+2025-08-30 11:44:55 [DEBUG] base_page.py:75 JS 点击成功: ('xpath', "//span[text()='新增']")
+2025-08-30 11:44:56 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:44:59 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:45:01 [INFO] conftest.py:119 ✅ expected: 导入成功 | actual: 导入成功
+2025-08-30 11:45:01 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:45:05 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:45:06 [INFO] conftest.py:119 ✅ expected: 导入成功 | actual: 导入成功
+2025-08-30 11:45:07 [ERROR] base_page.py:98 常规输入失败，尝试 JS 输入: ('xpath', "//input[@formcontrolname='employeeName']")，原因: Message: element click intercepted: Element <input _ngcontent-wok-c328="" nz-input="" formcontrolname="employeeName" class="ant-input ng-pristine ng-touched ng-valid" placeholder="请输入员工姓名"> is not clickable at point (693, 92). Other element would receive the click: <div class="ant-tabs-nav-wrap">...</div>
+  (Session info: chrome=139.0.7258.139); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+	GetHandleVerifier [0x0x29a8a3+63283]
+	GetHandleVerifier [0x0x29a8e4+63348]
+	(No symbol) [0x0xd3e43]
+	(No symbol) [0x0x122c20]
+	(No symbol) [0x0x120fda]
+	(No symbol) [0x0x11eb37]
+	(No symbol) [0x0x11ddf4]
+	(No symbol) [0x0x1125b5]
+	(No symbol) [0x0x14141c]
+	(No symbol) [0x0x112044]
+	(No symbol) [0x0x141694]
+	(No symbol) [0x0x16271a]
+	(No symbol) [0x0x141216]
+	(No symbol) [0x0x110855]
+	(No symbol) [0x0x1116f4]
+	GetHandleVerifier [0x0x50bb43+2623955]
+	GetHandleVerifier [0x0x506daa+2604090]
+	GetHandleVerifier [0x0x2c069a+218410]
+	GetHandleVerifier [0x0x2b0ed8+154984]
+	GetHandleVerifier [0x0x2b742d+180925]
+	GetHandleVerifier [0x0x2a22b8+94536]
+	GetHandleVerifier [0x0x2a2442+94930]
+	GetHandleVerifier [0x0x28d5ea+9338]
+	BaseThreadInitThunk [0x0x76b85d49+25]
+	RtlInitializeExceptionChain [0x0x77d7d2fb+107]
+	RtlGetAppContainerNamedObjectPath [0x0x77d7d281+561]
+	(No symbol) [0x0]
+
+2025-08-30 11:45:09 [ERROR] conftest.py:121 ❌ expected: 删除成功 | actual: 该核决层级被使用，不允许删除！
+2025-08-30 11:45:09 [INFO] conftest.py:119 ✅ expected: 不允许删除 | actual: 该核决层级被使用，不允许删除！
+2025-08-30 11:45:09 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:45:10 [INFO] conftest.py:119 ✅ expected: 共1笔记录 | actual: 共1笔记录
+2025-08-30 11:45:12 [INFO] conftest.py:119 ✅ expected: 停用成功 | actual: 停用成功
+2025-08-30 11:45:15 [INFO] conftest.py:119 ✅ expected: 停用成功 | actual: 员工 : 18469停用成功
+2025-08-30 11:45:18 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 用户ID : qwerreee修改成功
+2025-08-30 11:45:18 [INFO] conftest.py:119 ✅ expected: 启用成功 | actual: 启用成功
+2025-08-30 11:45:20 [INFO] conftest.py:119 ✅ expected: 启用成功 | actual: 员工 : 18469启用成功
+2025-08-30 11:45:23 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:45:25 [INFO] conftest.py:119 ✅ expected: 删除成功 | actual: 删除成功
+2025-08-30 11:45:25 [INFO] conftest.py:119 ✅ expected: 停用成功 | actual: 用户ID auto000005$qwerreee停用成功!
+2025-08-30 11:45:28 [INFO] conftest.py:119 ✅ expected: 删除成功 | actual: 删除成功
+2025-08-30 11:45:31 [INFO] conftest.py:119 ✅ expected: 启用成功 | actual: 用户ID auto000005$qwerreee启用成功!
+2025-08-30 11:45:32 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:45:35 [INFO] base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', "//span[text()=' 储存 ']") )
+2025-08-30 11:45:35 [DEBUG] base_page.py:75 JS 点击成功: ('xpath', "//span[text()=' 储存 ']")
+2025-08-30 11:45:36 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:45:36 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 角色ID : 482459新增成功
+2025-08-30 11:45:39 [INFO] conftest.py:119 ✅ expected: 删除成功 | actual: 删除成功
+2025-08-30 11:45:42 [INFO] conftest.py:119 ✅ expected: 用户已删除 | actual: 用户已删除
+2025-08-30 11:45:43 [INFO] conftest.py:119 ✅ expected: 导入成功 | actual: 导入成功
+2025-08-30 11:45:45 [INFO] base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', "//span[text()=' 储存 ']") )
+2025-08-30 11:45:45 [DEBUG] base_page.py:75 JS 点击成功: ('xpath', "//span[text()=' 储存 ']")
+2025-08-30 11:45:46 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:45:49 [INFO] conftest.py:119 ✅ expected: 用户群组已新增 | actual: 用户群组已新增
+2025-08-30 11:45:50 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 角色ID : 1212修改成功
+2025-08-30 11:45:54 [INFO] conftest.py:119 ✅ expected: 删除成功 | actual: 删除成功
+2025-08-30 11:45:56 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:45:56 [INFO] conftest.py:119 ✅ expected: 删除成功 | actual: 角色ID 1212删除成功
+2025-08-30 11:45:57 [INFO] conftest.py:119 ✅ expected: 用户群组已新增 | actual: 用户群组已新增
+2025-08-30 11:46:00 [INFO] conftest.py:119 ✅ expected: 导入成功 | actual: 导入成功
+2025-08-30 11:46:03 [INFO] base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', '(//label)[last()]') )
+2025-08-30 11:46:03 [DEBUG] base_page.py:75 JS 点击成功: ('xpath', '(//label)[last()]')
+2025-08-30 11:46:04 [INFO] conftest.py:119 ✅ expected: 用户群组已修改 | actual: 用户群组已修改
+2025-08-30 11:46:05 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:46:06 [INFO] base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', "//div[text()='企业组织']") )
+2025-08-30 11:46:06 [DEBUG] base_page.py:75 JS 点击成功: ('xpath', "//div[text()='企业组织']")
+2025-08-30 11:46:06 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:46:09 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:46:10 [INFO] conftest.py:119 ✅ expected: 用户群组已删除 | actual: 用户群组已删除
+2025-08-30 11:46:12 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:46:13 [INFO] base_page.py:70 常规点击失败，尝试 JS 点击: ('xpath', '(//label)[last()]') )
+2025-08-30 11:46:13 [DEBUG] base_page.py:75 JS 点击成功: ('xpath', '(//label)[last()]')
+2025-08-30 11:46:15 [INFO] conftest.py:119 ✅ expected: 删除成功 | actual: 删除成功
+2025-08-30 11:46:17 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:46:18 [INFO] conftest.py:119 ✅ expected: 我的首页 | actual: 我的首页
+2025-08-30 11:46:22 [INFO] conftest.py:119 ✅ expected: 操作成功 | actual: 操作成功
+2025-08-30 11:46:24 [INFO] conftest.py:119 ✅ expected: 删除成功 | actual: 删除成功
+2025-08-30 11:46:25 [INFO] conftest.py:119 ✅ expected: 新增成功 | actual: 新增成功
+2025-08-30 11:46:27 [INFO] conftest.py:119 ✅ expected: 密码错误 | actual: 用户账户或密码错误，您还能尝试9次
+2025-08-30 11:46:30 [INFO] conftest.py:119 ✅ expected: 邀请发起成功 | actual: 邀请发起成功
+2025-08-30 11:46:34 [INFO] conftest.py:119 ✅ expected: 授权码产生成功 | actual: 授权码产生成功
+2025-08-30 11:46:34 [INFO] conftest.py:119 ✅ expected: 修改成功 | actual: 修改成功
+2025-08-30 11:46:36 [INFO] conftest.py:119 ✅ expected: 用户账户或密码错误 | actual: 用户账户或密码错误
+2025-08-30 11:46:37 [INFO] conftest.py:119 ✅ expected: 邀请发起成功 | actual: 邀请发起成功
+2025-08-30 11:46:38 [INFO] test_invite_user.py:33 开始测试用户管理-生成邀请用户链接
+2025-08-30 11:46:41 [INFO] conftest.py:119 ✅ expected: 代理授权码 | actual: 代理授权码
+2025-08-30 11:46:49 [INFO] conftest.py:119 ✅ expected: 通知信件发送成功 | actual: 通知信件发送成功
